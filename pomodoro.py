@@ -16,28 +16,32 @@ while True:
     # Recebe os mintos desejados exibindo-os no pop-up e calcula o tempo de descanso
     m = simpledialog.askinteger('Minutos', 'Digite os minutos desejados:')
     s = 0
-    rest = int((0.20 * m) * 60)
+    rest = 0.20 * m
     countdown_label.config(text=f'Tempo para descanso: {rest} segundos')
     
     while m != 0:
         m -= 1
-        for s in range(60):
+        for s in range(1):
             countdown_label.config(text=f'Tempo restante de trabalho: \n{m} minutos, {60-s} segundos')
             time.sleep(1)
             root.update()
 
     # Exibe o pop-up indicando é hora do descanso
     messagebox.showinfo('Take a rest!', 'Hora do descanso! :)')
-
-
+    if rest > 0:
+        x = int(rest*100)
+        rest = 1
+        print(rest)
+    else: x =60
     # Exibe o pop-up com tempo de descanso restante
+
     while rest != 0:
-        minute = rest//60
-        for s in range(60):
-            take_rest = countdown_label.config(text=f'Descanso restante:\n {minute} minutes, {60-s} segundos')
+        rest -= 1
+        for s in range(x):
+            take_rest = countdown_label.config(text=f'Descanso restante:\n {rest} minutes, {60-s} segundos')
             time.sleep(1)
             root.update()
-        rest -= 1
+        
 
     
     messagebox.showinfo('It´s Over!!', 'Descanso acabou vagabundo!')

@@ -21,7 +21,7 @@ while True:
     
     while m != 0:
         m -= 1
-        for s in range(1):
+        for s in range(60):
             countdown_label.config(text=f'Tempo restante de trabalho: \n{m} minutos, {60-s} segundos')
             time.sleep(1)
             root.update()
@@ -31,18 +31,15 @@ while True:
     if rest > 0:
         x = int(rest*100)
         rest = 1
-        print(rest)
     else: x =60
+    
     # Exibe o pop-up com tempo de descanso restante
-
     while rest != 0:
         rest -= 1
         for s in range(x):
-            take_rest = countdown_label.config(text=f'Descanso restante:\n {rest} minutes, {60-s} segundos')
+            take_rest = countdown_label.config(text=f'Descanso restante:\n {rest} minutes, {x-s} segundos')
             time.sleep(1)
             root.update()
-        
-
     
     messagebox.showinfo('It´s Over!!', 'Descanso acabou vagabundo!')
 
